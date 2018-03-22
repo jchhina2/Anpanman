@@ -13,14 +13,14 @@ public class Anpanman extends JApplet implements Runnable, Actionlistener
 Thread runner;
 JButton expand;
 JButton contract;
-Image pics = new Image[6]
+Image [] pics = new Image[11]
 int total = 0;
 int count = 0;
 
 //Loading our images and creating our array of images
 public void init()
 {
-for(int i = 0; i < 6; i++)
+for(int i = 0; i < 11; i++)
 {
 String img = null;
 img = getParameter("Anpanman-" + i); //Create Anpanman images as a gif file
@@ -52,7 +52,7 @@ expand = new JButton("Click to Expand Anpanman's head");
 expand.addActionListener(this);
 
 //Creating the retract button
-retract = new JButton("Click to bring Anpanman's head back to normal");
+contract = new JButton("Click to bring Anpanman's head back to normal");
 stop.addActionListener(this);
 
 //Add the components
@@ -87,14 +87,14 @@ public void expand()
 if(runner == null)
 {
 runner = new Thread(this);
-runner.expand();
+expand();
 }
 }
 
 public void contract()
 {
 if(runner != null)
-  runner == null;
+  runner = null;
 }
 
 public void run()
